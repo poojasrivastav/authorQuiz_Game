@@ -4,9 +4,13 @@ import './App.css';
 
  class Book extends Component {
 
+ 	handleClick = () => {
+      this.props.onBookSelected(this.props.title);
+ 	}
+
 	render(){
 		return (
-			<div className="col-md-6 answer">
+			<div onClick={this.handleClick} className="col-md-6 answer">
              <h4>{this.props.title}</h4>
             </div>
 			)

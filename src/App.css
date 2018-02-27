@@ -25,6 +25,23 @@ img {
   
 }
 
+.fail{
+  height:50%;
+  width: 100%;
+  background-color: red;
+  padding: 30px 5px 20px 20px;
+  float: right;
+}
+
+.pass {
+  height: 50%;
+  width: 100%;
+  background-color: green;
+  padding: 30px 5px 20px 20px;
+  float: right;
+
+}
+
 .App-header {
   background-color: #222;
   height: 150px;

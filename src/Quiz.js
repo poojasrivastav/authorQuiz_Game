@@ -6,6 +6,63 @@ import './App.css';
 
 import _ from 'lodash';
 
+class Quiz extends Component {
+   constructor () {
+   	super();
+   	this.state= _.extend({
+   		bgClass: 'neutral',
+   		showContinue: false
+   	},data.selectGame());
+   }
+
+   handleBookSelected = (title) =>{
+   	var isCorrect = this.state.checkAnswer(title);
+
+
+   	
+   	this.setState({
+   		bgClass: isCorrect ? 'pass' : 'fail',
+   		showContinue: isCorrect
+
+   	})
+
+   }
+	render(){
+		return(
+
+       <div className="container">
+	       <header><h1>The Author Quiz</h1></header>
+		       <div className="jumbotron instru">
+		       <h2>Author Quiz</h2>
+		       <p>select the book written by the author shown</p>
+		       </div>
+		       <div className="row">
+			       <div className="col-md-4">
+			       		<img src={this.state.author.imageUrl} />
+			       </div>
+			       <div className="col-md-7 list-group">
+				       {this.state.books.map(b => {
+		                return (
+                         <div key={this.state.books.indexOf(b)}>
+                         <Book title={b} onBookSelected={this.handleBookSelected}/>
+                         </div>
+		                )
+				       })}
+			       </div>
+			       <div className={"col-md-1 " + this.state.bgClass}></div>
+		       </div>
+		       <div>{this.state.showContinue ? 
+			       	(<div className="row">
+				       	<div className="col-md-12">
+				       	{<input onClick={this.handleContinue} type="button" className="btn btn-success"/>}
+				       	</div>
+			       	</div>) : <span/>}
+		       </div>
+       </div>
+		)
+	}
+}
+
 const data = [
   {   id: 1,
     name:'Mark Twain',
@@ -54,45 +111,17 @@ data.selectGame = function(){
 				return title === answer;
 
 			})
-		})
+		}),
+     checkAnswer(title){
+     	return this.author.books.some(function(t){
+     		return t === title;
+     	});
+     }
+
+
 	}
 
 };
-
-class Quiz extends Component {
-   constructor () {
-   	super();
-   	this.state= data.selectGame();
-   }
-	render(){
-		return(
-
-       <div className="container">
-	       <header><h1>The Author Quiz</h1></header>
-		       <div className="jumbotron instru">
-		       <h2>Author Quiz</h2>
-		       <p>select the book written by the author shown</p>
-		       </div>
-		       <div className="row">
-			       <div className="col-md-4">
-			       		<img src={this.state.author.imageUrl} />
-			       </div>
-			       <div className="col-md-7 list-group">
-				       {this.state.books.map(b => {
-		                return (
-                         <div key={this.state.books.indexOf(b)}>
-                         <Book title={b} />
-                         </div>
-		                )
-				       })}
-			       </div>
-			       <div className="col-md-1"></div>
-		       </div>
-       </div>
-		)
-	}
-}
-
 
 
 
