@@ -7,24 +7,27 @@ import './App.css';
 import _ from 'lodash';
 
 class Quiz extends Component {
-   constructor () {
-   	super();
-   	this.state= _.extend({
+   static initialState = () => (
+   	_.extend({
    		bgClass: 'neutral',
    		showContinue: false
-   	},data.selectGame());
-   }
+   	},data.selectGame())
+
+   )
+   	state = Quiz.initialState();
+  
 
    handleBookSelected = (title) =>{
    	var isCorrect = this.state.checkAnswer(title);
-
-
-   	
    	this.setState({
    		bgClass: isCorrect ? 'pass' : 'fail',
    		showContinue: isCorrect
 
    	})
+   }
+
+   handleContinue = () => {
+    this.setState(Quiz.initialState());
 
    }
 	render(){
