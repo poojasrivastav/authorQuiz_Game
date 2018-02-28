@@ -14,9 +14,8 @@ class Quiz extends Component {
    	},data.selectGame())
 
    )
-   	state = Quiz.initialState();
+   state = Quiz.initialState();
   
-
    handleBookSelected = (title) =>{
    	var isCorrect = this.state.checkAnswer(title);
    	this.setState({
@@ -28,11 +27,10 @@ class Quiz extends Component {
 
    handleContinue = () => {
     this.setState(Quiz.initialState());
-
    }
+
 	render(){
 		return(
-
        <div className="container">
 	       <header><h1>The Author Quiz</h1></header>
 		       <div className="jumbotron instru">
@@ -112,20 +110,14 @@ data.selectGame = function(){
 		author: _.find(this, function(author){
 			return author.books.some(function(title){
 				return title === answer;
-
 			})
 		}),
      checkAnswer(title){
      	return this.author.books.some(function(t){
      		return t === title;
      	});
-     }
-
-
-	}
-
+     }}
 };
-
 
 
  export default Quiz;
