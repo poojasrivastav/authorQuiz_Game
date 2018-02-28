@@ -57,7 +57,7 @@ class Quiz extends Component {
 		       <div>{this.state.showContinue ? 
 			       	(<div className="row">
 				       	<div className="col-md-12">
-				       	{<input onClick={this.handleContinue} type="button" className="btn btn-success"/>}
+				       	{<input onClick={this.handleContinue} type="button" className="btn btn-success button" value="Continue"/>}
 				       	</div>
 			       	</div>) : <span/>}
 		       </div>
@@ -79,12 +79,12 @@ const data = [
   },
   {   id:  3,
     name: 'J.K. Rowling',
-    imageUrl: "http://s1.ibtimes.com/sites/www.ibtimes.com/files/styles/lg/public/2015/06/09/jk-rowling.jpg",
+    imageUrl: "https://i2-prod.irishmirror.ie/incoming/article5197657.ece/ALTERNATES/s615/JK-Rowling.jpg",
     books: ['Harry Potter and the Sorcerers Stone']
   },
   {   id: 4,
     name: 'Stephen King',
-    imageUrl: "https://steemitimages.com/DQmNZi6hoUYS684Z5ygZ81LneDG3DA6xw8F1gWciD2QaA4Z/Stephen_King.jpg",
+    imageUrl: "https://vignette.wikia.nocookie.net/stephenking/images/a/a0/Stephen_king-coming-to-boulder.jpg/revision/latest?cb=20170530002714",
     books: ['The Shining', 'IT']
   },
   {   id: 5,
